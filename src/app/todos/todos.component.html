@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="col">
+    <app-list
+      [todos]="todos().todos"
+      [test]="selectedTodo()"
+      (selectedTodo)="selectTodo($event)"
+    ></app-list>
+  </div>
+  <div class="col">
+    <app-details
+      [form]="form"
+      [selectedTodo]="selectedTodo()"
+      (submitFormData)="saveTodo($event)"
+      (clearFormData)="clearTodo()"
+    ></app-details>
+  </div>
+</div>

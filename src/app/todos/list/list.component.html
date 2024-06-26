@@ -1,0 +1,15 @@
+@for(todo of todos(); track todo.id) {
+<div class="list-group">
+  <a
+    (click)="selectTodo(todo)"
+    class="list-group-item list-group-item-action mb-2"
+    [class]="{ active: test()?.id === todo.id }"
+    [attr.aria-current]="{ active: test()?.id === todo.id }"
+  >
+    <div class="flex flex-column">
+      <span>{{ todo.todo }}</span>
+      <span>Completed: {{ todo.completed }}</span>
+    </div>
+  </a>
+</div>
+}
