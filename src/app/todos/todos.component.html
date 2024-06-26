@@ -1,9 +1,11 @@
 <div class="container">
   <div class="col">
     <app-list
-      [todos]="todos().todos"
+      [todos]="todos()"
       [test]="selectedTodo()"
       (selectedTodo)="selectTodo($event)"
+      (deleteTodo)="deleteTodo($event)"
+      (viewMore)="getTodo($event)"
     ></app-list>
   </div>
   <div class="col">

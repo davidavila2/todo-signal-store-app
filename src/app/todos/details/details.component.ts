@@ -16,7 +16,7 @@ export class DetailsComponent {
   clearFormData = output();
 
   submitForm() {
-    this.submitFormData.emit({ ...this.form.value, userId: 1 });
+    this.submitFormData.emit(this.form.value);
   }
 
   resetForm() {}

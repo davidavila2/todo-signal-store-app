@@ -12,11 +12,15 @@ export const routes: Routes = [
   {
     path: 'todos',
     component: TodosComponent,
-    children: [
-      {
-        path: 'id',
-        component: TodoComponent,
-      },
-    ],
+    // children: [
+    //   {
+    //     path: ':id',
+    //     component: TodoComponent,
+    //   },
+    // ],
+  },
+  {
+    path: 'todos/:id',
+    component: TodoComponent,
   },
 ];

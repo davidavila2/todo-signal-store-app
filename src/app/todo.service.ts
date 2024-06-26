@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Todo, Todos } from './todo';
+import { Todo } from './todo';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodoService {
-  BASE_URL = 'https://dummyjson.com';
+  BASE_URL = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
@@ -15,8 +15,8 @@ export class TodoService {
     return `${this.BASE_URL}`;
   }
 
-  getTodos(): Observable<Todos> {
-    return this.http.get<Todos>(`${this.getUrl()}/todos/user/1`);
+  getTodos(): Observable<Todo[]> {
+    return this.http.get<Todo[]>(`${this.getUrl()}/todos`);
   }
 
   getTodo(id: string): Observable<Todo> {
@@ -24,14 +24,14 @@ export class TodoService {
   }
 
   createTodo(todo: Todo): Observable<Todo> {
-    return this.http.post<Todo>(`${this.getUrl()}/todos/add`, todo);
+    return this.http.post<Todo>(`${this.getUrl()}/todos`, todo);
   }
 
   updateTodo(id: string, todo: Todo): Observable<Todo> {
-    return this.http.put<Todo>(`${this.getUrl()}/todos/${id}`, todo);
+    return this.http.patch<Todo>(`${this.getUrl()}/todos/${id}`, todo);
   }
 
-  deleteTodo(id: number): Observable<Todo> {
+  deleteTodo(id: string): Observable<Todo> {
     return this.http.delete<Todo>(`${this.getUrl()}/todos/${id}`);
   }
 }
