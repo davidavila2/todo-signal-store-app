@@ -1,4 +1,4 @@
-@for(todo of todos(); track todo.id) {
+@if(todos().length > 0) { @for(todo of todos(); track todo.id) {
 <div class="list-group mb-2">
   <a
     (click)="selectTodo(todo)"
@@ -25,4 +25,6 @@
     </div>
   </a>
 </div>
+} } @else {
+<app-loader></app-loader>
 }

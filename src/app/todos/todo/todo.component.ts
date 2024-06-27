@@ -2,11 +2,12 @@ import { Component, WritableSignal, inject, signal } from '@angular/core';
 import { Todo } from '../../todo';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TodoService } from '../../todo.service';
+import { LoaderComponent } from '../../ui/loader/loader.component';
 
 @Component({
   selector: 'app-todo',
   standalone: true,
-  imports: [],
+  imports: [LoaderComponent],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss',
 })

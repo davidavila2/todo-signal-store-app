@@ -3,6 +3,7 @@ import {
   DestroyRef,
   OnInit,
   WritableSignal,
+  effect,
   inject,
   signal,
 } from '@angular/core';
@@ -19,11 +20,14 @@ import {
 } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { getState, signalStore, withState } from '@ngrx/signals';
+import { todoStore } from './todo.store';
 
 @Component({
   selector: 'app-todos',
   standalone: true,
   imports: [ListComponent, DetailsComponent, ReactiveFormsModule, JsonPipe],
+  providers: [todoStore],
   templateUrl: './todos.component.html',
   styleUrl: './todos.component.scss',
 })
@@ -34,8 +38,13 @@ export class TodosComponent implements OnInit {
   todos: WritableSignal<Todo[]> = signal([initialTodo]);
   selectedTodo: WritableSignal<Todo | null> = signal(initialTodo);
   form!: FormGroup;
+  readonly todoStore = inject(todoStore);
 
-  constructor(private todoService: TodoService) {}
+  constructor(private todoService: TodoService) {
+    effect(() => {
+      const state = getState(this.todoStore);
+    });
+  }
 
   ngOnInit(): void {
     this.getTodos();

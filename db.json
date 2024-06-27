@@ -13,7 +13,7 @@
     {
       "id": "3",
       "todo": "Build something fun!",
-      "completed": true
+      "completed": false
     }
   ]
 }

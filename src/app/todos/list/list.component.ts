@@ -1,11 +1,12 @@
 import { Component, InputSignal, Signal, input, output } from '@angular/core';
 import { Todo } from '../../todo';
 import { JsonPipe } from '@angular/common';
+import { LoaderComponent } from '../../ui/loader/loader.component';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [JsonPipe],
+  imports: [LoaderComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })

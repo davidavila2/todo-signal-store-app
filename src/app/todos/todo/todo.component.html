@@ -1,5 +1,8 @@
 <div class="container">
+  @if(todo()) {
   <h1>Todo: {{ todo().todo }}</h1>
 
   <button (click)="goBack()">Back to List</button>
+  } @else {
+  <app-loader></app-loader>}
 </div>
