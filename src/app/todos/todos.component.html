@@ -1,17 +1,17 @@
 <div class="container">
   <div class="col">
     <app-list
-      [todos]="todos()"
-      [test]="selectedTodo()"
-      (selectedTodo)="selectTodo($event)"
-      (deleteTodo)="deleteTodo($event)"
+      [todos]="todoStore.todos()"
+      [currentTodo]="todoStore.selectedTodo()"
+      (deleteTodo)="todoStore.deleteTodo($event)"
+      (selectTodo)="selectTodo($event)"
       (viewMore)="getTodo($event)"
     ></app-list>
   </div>
   <div class="col">
     <app-details
       [form]="form"
-      [selectedTodo]="selectedTodo()"
+      [selectedTodo]="todoStore.selectedTodo()"
       (submitFormData)="saveTodo($event)"
       (clearFormData)="clearTodo()"
     ></app-details>

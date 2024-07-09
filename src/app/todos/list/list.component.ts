@@ -6,19 +6,19 @@ import { LoaderComponent } from '../../ui/loader/loader.component';
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [LoaderComponent],
+  imports: [LoaderComponent, JsonPipe],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
 export class ListComponent {
   todos = input.required<Todo[]>();
-  test = input<Todo | null>();
-  selectedTodo = output<Todo>();
+  currentTodo = input<Todo | null>();
+  selectTodo = output<Todo>();
   deleteTodo = output<string>();
   viewMore = output<string>();
 
-  selectTodo(todo: Todo): void {
-    this.selectedTodo.emit(todo);
+  select(todo: Todo): void {
+    this.selectTodo.emit(todo);
   }
 
   delete(id: string): void {

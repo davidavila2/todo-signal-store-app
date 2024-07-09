@@ -19,5 +19,7 @@ export class DetailsComponent {
     this.submitFormData.emit(this.form.value);
   }
 
-  resetForm() {}
+  resetForm() {
+    this.clearFormData.emit();
+  }
 }
